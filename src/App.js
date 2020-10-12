@@ -19,7 +19,10 @@ class App extends React.Component {
   }
 
   ClickHandler(event) {
-    console.log(event.target);
+    // console.log(event.target.offsetParent.querySelector("h3").textContent);
+    const name = event.target.offsetParent.querySelector("h3").textContent;
+    const char = this.state.results.find((el) => el.name === name);
+    console.log(char);
   }
 
   SubmitHandler(event) {
@@ -53,7 +56,7 @@ class App extends React.Component {
               name={result.name}
               key={result.id}
               thumbnail={thumbnailurl}
-              onClick={this.ClickHandler}
+              clickHandler={this.ClickHandler}
             />
           );
         });
