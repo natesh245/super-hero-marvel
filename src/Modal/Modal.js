@@ -8,6 +8,12 @@ function Modal(props) {
       <span className="modal-close" onClick={props.modalHandler}>
         X
       </span>
+      <div className="modal-image">
+        <img
+          src={props.selected.thumbnail.path + "/landscape_incredible.jpg"}
+          alt={props.selected.id}
+        />
+      </div>
     </div>
   );
 }
