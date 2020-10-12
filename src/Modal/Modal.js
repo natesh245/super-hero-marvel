@@ -14,6 +14,20 @@ function Modal(props) {
           alt={props.selected.id}
         />
       </div>
+      <div className="modal-content">
+        <h2>{props.selected.name}</h2>
+        <p>{props.selected.description || "No description"}</p>
+        {props.selected.urls.map((a) => (
+          <a
+            href={a.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            key={props.id}
+          >
+            {a.type}
+          </a>
+        ))}
+      </div>
     </div>
   );
 }
