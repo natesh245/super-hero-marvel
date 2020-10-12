@@ -1,0 +1,21 @@
+.modal {
+  width: 95%;
+  height: 95vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 100;
+  transform: translate(-50%, -50%);
+  background-color: wheat;
+  box-shadow: 2px 2px 3px 3px black, -2px -2px 3px 3px black;
+}
+
+.modal-close {
+  font-size: 2rem;
+  padding: 1rem;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}

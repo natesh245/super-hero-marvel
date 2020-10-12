@@ -4,6 +4,7 @@ import "./App.css";
 
 import CharacterCard from "./CharacterCard/CharacterCard";
 import SearchForm from "./SearchForm/SearchForm";
+import Modal from "./Modal/Modal";
 
 class App extends React.Component {
   constructor() {
@@ -12,10 +13,17 @@ class App extends React.Component {
       results: [],
       searchInput: "",
       cards: <h2>search for your Marvel Hero/Villains</h2>,
+      showModal: false,
+      selectedChar: {},
     };
     this.SubmitHandler = this.SubmitHandler.bind(this);
     this.RequestHandler = this.RequestHandler.bind(this);
     this.ClickHandler = this.ClickHandler.bind(this);
+    this.CloseModal = this.CloseModal.bind(this);
+  }
+
+  CloseModal() {
+    this.setState({ showModal: false });
   }
 
   ClickHandler(event) {
@@ -23,6 +31,7 @@ class App extends React.Component {
     const name = event.target.offsetParent.querySelector("h3").textContent;
     const char = this.state.results.find((el) => el.name === name);
     console.log(char);
+    this.setState({ showModal: true, selectedChar: char });
   }
 
   SubmitHandler(event) {
@@ -75,6 +84,12 @@ class App extends React.Component {
             ? "0 character loaded"
             : `${this.state.results.length} characters loaded`}
         </h3>
+        {this.state.showModal ? (
+          <Modal
+            modalHandler={this.CloseModal}
+            selected={this.state.selectedChar}
+          />
+        ) : null}
         <div className="char-container">{this.state.cards}</div>
       </div>
     );
